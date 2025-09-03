@@ -5,7 +5,7 @@ const sequelize = require('./config/database');
 const GuestList = require('./models/guestListModel');
 const guestListRoute = require('./routes/guestListRoute');
 const guestListMongoRoute = require('./routes/guestListMongoRoute');
-const https = require('https');
+const http = require('http');
 const socket = require("socket.io");
 const { Server } = require("socket.io");
 const fs = require('fs');
@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3001;
 const HOST = process.env.HOST;
 
 const app = express();
-const server = https.createServer({
+const server = http.createServer({
     key: fs.readFileSync('./certs/key.pem'),
     cert: fs.readFileSync('./certs/cert.pem'),
 },app)
@@ -60,6 +60,6 @@ io.on("connection", (socket) => {
 app.set("socketio", io);
 
 
-server.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
