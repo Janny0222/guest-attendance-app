@@ -13,7 +13,7 @@ const { socketManager } = require('./sockets/socketManager');
 const connectToDatabase = require('./config/mongoDb');
 
 dotenv.config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 const HOST = process.env.HOST;
 
 const app = express();

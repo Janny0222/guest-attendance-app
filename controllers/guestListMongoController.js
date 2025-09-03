@@ -3,7 +3,7 @@ const GuestList = require("../models/guest-listModel");
 const getAllGuests = async (req, res) => {
   try {
     const guests = await GuestList.find();
-    res.status(200).json(guests);
+    return res.status(200).json(guests);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
