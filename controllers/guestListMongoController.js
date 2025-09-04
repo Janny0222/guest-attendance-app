@@ -29,6 +29,9 @@ const getGuestByName = async (req, res) => {
     }
     guest.isAttending = true;
     await guest.save();
+    
+    const io = req.app.get("socketio");
+    io.emit("scan-guest-updated", guest);
     res.status(200).json(guest);
   } catch (error) {
     res.status(500).json({ message: error.message });
