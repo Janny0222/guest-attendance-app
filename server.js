@@ -23,7 +23,7 @@ const server = http.createServer({
 },app)
 const io = new Server(server, {
     cors: {
-        origin: "https://10.20.20.149:3000",
+        origin: "https://greenstone-30th.vercel.app/",
         methods: ["GET", "POST"],
     }
 })
