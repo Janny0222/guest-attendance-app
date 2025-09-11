@@ -3,6 +3,8 @@ const GuestList = require("../models/guest-listModel");
 const getAllGuests = async (req, res) => {
   try {
     const guests = await GuestList.find();
+
+    
     return res.status(200).json(guests);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -14,6 +16,9 @@ const addGuest = async (req, res) => {
     const { name, company } = req.body;
     const newGuest = new GuestList({ name, company });
     await newGuest.save();
+
+    const io = req.app.get("socketio");
+    io.emit("new-guest", newGuest);
     res.status(201).json(newGuest);
   } catch (error) {
     res.status(500).json({ message: error.message });
