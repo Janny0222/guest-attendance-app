@@ -5,6 +5,7 @@ const guestListMongoController = require('../controllers/guestListMongoControlle
 router.get('/', guestListMongoController.getAllGuests);
 router.post('/', guestListMongoController.addGuest);
 router.get('/:name', guestListMongoController.getGuestByName);
+router.get('/id/:id', guestListMongoController.getSpecificGuest);
 
 
 module.exports = router;

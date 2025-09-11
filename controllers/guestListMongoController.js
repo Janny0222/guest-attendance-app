@@ -9,7 +9,19 @@ const getAllGuests = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};  
+};
+const getSpecificGuest = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const guest = await GuestList.findById(id);
+    if (!guest) {
+      return res.status(404).json({ message: "Guest not found" });
+    }
+    res.status(200).json(guest);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 const addGuest = async (req, res) => {
   try {
@@ -47,4 +59,5 @@ module.exports = {
   getAllGuests,
   addGuest,
   getGuestByName,
+  getSpecificGuest,
 };
