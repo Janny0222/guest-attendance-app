@@ -5,6 +5,7 @@ const sequelize = require('./config/database');
 const GuestList = require('./models/guestListModel');
 const guestListRoute = require('./routes/guestListRoute');
 const guestListMongoRoute = require('./routes/guestListMongoRoute');
+const guestAttendeesRoute = require('./routes/guestAttendeesRoute');
 const http = require('http');
 const socket = require("socket.io");
 const { Server } = require("socket.io");
@@ -42,6 +43,7 @@ app.use(cors());
 // Routes
 app.use('/api/guests', guestListRoute);
 app.use('/api/v1/guests', guestListMongoRoute);
+app.use('/api/v1/attendees', guestAttendeesRoute);
 
 io.on("connection", (socket) => {
   console.log("✅ New client connected:", socket.id);
