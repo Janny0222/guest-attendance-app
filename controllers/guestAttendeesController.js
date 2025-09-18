@@ -2,7 +2,7 @@ const GuestAttendees = require("../models/guestAttendeesModel");
 
 const getAllAttendees = async (req, res) => {
     try {
-        const guests = await GuestAttendees.findAll();
+        const guests = await GuestAttendees.find();
         res.status(200).json(guests);
     } catch (error) {
         res.status(500).json({ message: error.message });
