@@ -55,9 +55,23 @@ const getGuestByName = async (req, res) => {
   }
 };
 
+const getGuestByUserType = async (req, res) => {
+  try {
+    const { userType } = req.params;
+    const guests = await GuestList.find({ userType });
+    if (guests.length === 0) {
+      return res.status(404).json({ message: "No guests found for the specified user type" });
+    }
+    res.status(200).json(guests);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllGuests,
   addGuest,
   getGuestByName,
   getSpecificGuest,
+  getGuestByUserType
 };
