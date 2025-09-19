@@ -11,7 +11,7 @@ const getAllAttendees = async (req, res) => {
 
 const addAttendee = async (req, res) => {
     try {
-        const { name, company } = req.body;
+        const { name, company, userType } = req.body;
         const newAttendee = await GuestAttendees.create({ name, company, userType, time_arrival: new Date() });
 
         const io = req.app.get("socketio");
