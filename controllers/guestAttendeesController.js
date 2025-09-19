@@ -12,7 +12,7 @@ const getAllAttendees = async (req, res) => {
 const addAttendee = async (req, res) => {
     try {
         const { name, company } = req.body;
-        const newAttendee = await GuestAttendees.create({ name, company, time_arrival: new Date() });
+        const newAttendee = await GuestAttendees.create({ name, company, userType, time_arrival: new Date() });
 
         const io = req.app.get("socketio");
         io.emit("guest-verified", newAttendee);
