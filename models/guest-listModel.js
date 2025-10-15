@@ -7,14 +7,16 @@ const GuestListSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    company: {
+    group: {
         type: String,
-        required: false,
+        required: true,
+        enum: ['Balintawak-Office', 'SQ-Office'],
     },
     userType: {
         type: String,
-        required: true,
-        enum: ['Guest', 'Employee']
+        required: false,
+        enum: ['Guest', 'Employee'],
+        default: 'Employee'
     },
     isAttending: {
         type: Boolean,

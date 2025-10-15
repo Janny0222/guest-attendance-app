@@ -11,8 +11,8 @@ const getAllGuests = async (req, res) => {
 
 const addGuest = async (req, res) => {
     try {
-        const { name, company } = req.body;
-        const newGuest = await GuestList.create({ name, company});
+        const { name, group } = req.body;
+        const newGuest = await GuestList.create({ name, group});
         res.status(201).json(newGuest);
     } catch (error) {
         res.status(500).json({ message: error.message });

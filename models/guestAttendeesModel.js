@@ -5,9 +5,9 @@ const GuestAttendeesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    company: {
+    group: {
         type: String,
-        required: false,
+        required: true,
     },
     userType: {
         type: String,
