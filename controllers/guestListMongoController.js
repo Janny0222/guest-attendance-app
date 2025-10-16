@@ -25,8 +25,8 @@ const getSpecificGuest = async (req, res) => {
 
 const addGuest = async (req, res) => {
   try {
-    const { name, group } = req.body;
-    const newGuest = new GuestList({ name, group });
+    const { name, group, department } = req.body;
+    const newGuest = new GuestList({ name, group, department });
     await newGuest.save();
 
     const io = req.app.get("socketio");

@@ -1,5 +1,4 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+
 const mongoose = require('mongoose');
 
 const GuestListSchema = new mongoose.Schema({
@@ -11,6 +10,10 @@ const GuestListSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ['Balintawak-Office', 'SQ-Office'],
+    },
+    department: {
+        type: String,
+        required: true,
     },
     userType: {
         type: String,

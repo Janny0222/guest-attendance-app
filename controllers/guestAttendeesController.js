@@ -11,14 +11,14 @@ const getAllAttendees = async (req, res) => {
 
 const addAttendee = async (req, res) => {
     try {
-        const { name, group, userType } = req.body;
+        const { name, group, department, userType } = req.body;
         
         const existingGuest = await GuestAttendees.findOne({ name });
 
         if (existingGuest) {
             return res.status(400).json({ message: "Guest already exists" });
         }
-        const newAttendee = await GuestAttendees.create({ name, group, userType, time_arrival: new Date() });
+        const newAttendee = await GuestAttendees.create({ name, group, department, userType, time_arrival: new Date() });
 
         const io = req.app.get("socketio");
         io.emit("guest-verified", newAttendee);
