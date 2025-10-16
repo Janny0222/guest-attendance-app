@@ -49,8 +49,10 @@ const getGuestByName = async (req, res) => {
     
     const io = req.app.get("socketio");
     io.emit("scan-guest-updated", guest);
+    
     res.status(200).json(guest);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };

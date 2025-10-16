@@ -16,7 +16,8 @@ const GuestAttendeesSchema = new mongoose.Schema({
     userType: {
         type: String,
         required: true,
-        enum: ['Guest', 'Employee']
+        enum: ['Guest', 'Employee'],
+        default: 'Employee'
     },
     time_arrival: {
         type: Date,
