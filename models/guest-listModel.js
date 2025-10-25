@@ -9,7 +9,7 @@ const GuestListSchema = new mongoose.Schema({
     group: {
         type: String,
         required: true,
-        enum: ['Balintawak-Office', 'SQ-Office'],
+        enum: ['Balintawak-Office', 'SQ-Office', 'Others'],
     },
     department: {
         type: String,

@@ -15,7 +15,7 @@ const getSpecificGuest = async (req, res) => {
     const { id } = req.params;
     const guest = await GuestList.findById(id);
     if (!guest) {
-      return res.status(404).json({ message: "Guest not found" });
+      return res.status(404).json({ message: "Guest not found " });
     }
     res.status(200).json(guest);
   } catch (error) {
@@ -42,7 +42,7 @@ const getGuestByName = async (req, res) => {
     const { name } = req.params;
     const guest = await GuestList.findOne({ name });
     if (!guest) {
-      return res.status(404).json({ message: "Guest not found" });
+      return res.status(404).json({ message: "Guest not found or Invalid QR" });
     }
     guest.isAttending = true;
     await guest.save();
