@@ -26,6 +26,21 @@ const GuestListSchema = new mongoose.Schema({
         required: true,
         default: false
     },
+    isFirstRaffleWinner: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
+    isSecondRaffleWinner: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
+    isThirdRaffleWinner: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
 }, { timestamps: true });
 
 const GuestList = mongoose.model('GuestList', GuestListSchema);

@@ -6,6 +6,7 @@ const GuestList = require('./models/guestListModel');
 const guestListRoute = require('./routes/guestListRoute');
 const guestListMongoRoute = require('./routes/guestListMongoRoute');
 const guestAttendeesRoute = require('./routes/guestAttendeesRoute');
+const firstRaffleRoute = require('./routes/raffleRoute');
 const http = require('http');
 const socket = require("socket.io");
 const { Server } = require("socket.io");
@@ -44,6 +45,7 @@ app.use(cors());
 app.use('/api/guests', guestListRoute);
 app.use('/api/v1/guests', guestListMongoRoute);
 app.use('/api/v1/attendees', guestAttendeesRoute);
+app.use('/api/v1/raffles', firstRaffleRoute);
 
 io.on("connection", (socket) => {
   console.log("✅ New client connected:", socket.id);
