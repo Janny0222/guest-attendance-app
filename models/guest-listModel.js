@@ -31,15 +31,27 @@ const GuestListSchema = new mongoose.Schema({
         required: false,
         default: false
     },
+    firstRaffleCount: {
+        type: Number,
+        required: false,
+    },
     isSecondRaffleWinner: {
         type: Boolean,
         required: false,
         default: false
     },
+    secondRaffleCount: {
+        type: Number,
+        required: false,
+    },
     isThirdRaffleWinner: {
         type: Boolean,
         required: false,
         default: false
+    },
+    thirdRaffleCount: {
+        type: Number,
+        required: false,
     }
 }, { timestamps: true });
 
