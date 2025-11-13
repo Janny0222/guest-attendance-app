@@ -4,5 +4,6 @@ const guestAttendeesController = require('../controllers/guestAttendeesControlle
 
 router.get('/', guestAttendeesController.getAllAttendees);
 router.post('/', guestAttendeesController.addAttendee);
+router.delete('/delete', guestAttendeesController.deleteAllAttendees);
 
 module.exports = router;

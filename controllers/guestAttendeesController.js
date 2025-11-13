@@ -1,3 +1,4 @@
+const GuestList = require("../models/guest-listModel");
 const GuestAttendees = require("../models/guestAttendeesModel");
 
 const getAllAttendees = async (req, res) => {
@@ -28,7 +29,20 @@ const addAttendee = async (req, res) => {
     }
 };
 
+const deleteAllAttendees = async (req, res) => {
+    try {
+        await Promise.all([
+            GuestAttendees.deleteMany({}),
+            GuestList.updateMany({})
+        ]);
+        res.status(200).json({ message: "All attendees deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getAllAttendees,
-    addAttendee
+    addAttendee,
+    deleteAllAttendees
 };
